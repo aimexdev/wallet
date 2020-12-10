@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="org.AimEx">
+
+    <uses-sdk tools:overrideLibrary="org.AimEx.khartwarewallet.lib,im.status.hardwallet_lite_android"/>
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.NFC"/>
+
+    <uses-feature android:name="android.hardware.nfc" android:required="false"/>
+    <uses-feature android:name="android.hardware.nfc.hce" android:required="false" tools:replace="android:required"/>
+
+    <uses-feature android:name="android.hardware.camera"
+                  android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"
+                  android:required="false"/>
+    <application
+            android:allowBackup="true"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:name=".App"
+
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+
+        <service android:name="org.AimEx.notifications.TransactionNotificationService"/>
+
+        <activity android:name="org.AimEx.qr.scan.QRScanActivity"/>
+
+        <activity android:name="org.AimEx.chains.SwitchChainActivity"/>
+        <activity android:name="org.AimEx.request.RequestActivity"/>
+        <activity android:name="org.AimEx.qr.show.ShowQRCodeActivity"/>
+        <activity android:name="org.AimEx.info.AimExInfoActivity"/>
+        <activity android:name="org.AimEx.debug.DebugAimExActivity"/>
+
+        <activity android:name="org.AimEx.trezor.TrezorSignTransactionActivity"/>
+        <activity android:name="org.AimEx.trezor.TrezorGetAddressActivity"/>
+
+        <activity android:name="org.AimEx.nfc.NFCGetAddressActivity"/>
+        <activity android:name="org.AimEx.nfc.NFCSignTransactionActivity"/>
+
+        <activity android:name="org.AimEx.walletconnect.WalletConnectConnectionActivity"/>
+        <activity android:name="org.AimEx.walletconnect.WalletConnectErrorActivity"/>
+
+        <activity android:name="org.AimEx.accounts.ExportKeyActivity"/>
+        <activity android:name="org.AimEx.accounts.EditAccountActivity"/>
+        <activity android:name="org.AimEx.preferences.reference.SelectReferenceActivity"/>
+        <activity android:name="org.AimEx.sign.ParitySignerQRActivity"/>
+        <activity android:name="org.AimEx.sign.SignTextActivity"/>
+        <activity android:name="org.AimEx.tokens.SelectTokenActivity"/>
+        <activity android:name="org.AimEx.tokens.CreateTokenDefinitionActivity"/>
+        <activity android:name="org.AimEx.securityinfo.SecurityInfoActivity"/>
+
+        <activity android:name="org.AimEx.preferences.PreferenceActivity"/>
+
+        <activity android:name="org.AimEx.transactions.CreateTransactionActivity"/>
+        <activity android:name="org.AimEx.transactions.ViewTransactionActivity"/>
+
+        <activity android:name="org.AimEx.toolbar.ToolbarSetupActivity"/>
+
+        <activity android:name="org.AimEx.intents.IntentHandlerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data
+                        android:scheme="ethereum"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data
+                        android:scheme="wc"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="org.AimEx.overview.OverviewActivity"/>
+
+        <activity
+                android:name=".info.OpenSourceLicenseInfoActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:scheme="org.AimEx.licenses"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="org.AimEx.transactions.OfflineTransactionActivity"
+                  android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name="org.AimEx.accounts.CreateAccountActivity"/>
+        <activity android:name="org.AimEx.accounts.NewAccountTypeSelectActivity"/>
+        <activity android:name="org.AimEx.accounts.AccountPickActivity"/>
+        <activity android:name="org.AimEx.accounts.SwitchAccountActivity"/>
+        <activity android:name="org.AimEx.accounts.ImportKeyActivity"/>
+
+        <activity android:name=".startup.StartupActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                       android:resource="@xml/shortcuts"/>
+        </activity>
+        <activity android:name="org.AimEx.nfc.NFCEnterCredentialsActivity"
+                  android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name="org.AimEx.nfc.NDEFTagHandlingActivity">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="vnd.android.nfc" android:host="ext"
+                      android:pathPrefix="/android.com:pkg"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="org.AimEx.credentials.RequestPINActivity"/>
+        <activity android:name="org.AimEx.credentials.RequestPasswordActivity"
+                  android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="org.AimEx.accounts.ImportAsActivity"/>
+        <activity android:name="org.AimEx.qr.scan.QRScanActivityAndProcessActivity"/>
+        <activity android:name="org.AimEx.nfc.NFCSignTextActivity"/>
+        <activity android:name="org.AimEx.chains.EditChainActivity"/>
+        <activity android:name=".activities.TincubETHActivity"/>
+        <activity android:name=".info.WarningActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="AimExwarn"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
